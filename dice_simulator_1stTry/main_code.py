@@ -1,18 +1,22 @@
 # from menu import *
 from moje_funkcje import *
-# from Classy import *
+from Classy import *
 # GAME INFO
-nick = "GRACZ 1"
-class Player():
-    nick = ''
-def menu():
+# Jakies kiedys bylo
+
+def first_log():
     def registration():
         print('******** REJESTRACJA ********')
         while True:
-            imie, nazwisko, wiek, nickname = input('Podaj imie: '), input("Podaj nazwisko: "), input("Podaj wiek: "), input("Podaj nickname: ")
-            if imie.isalpha() == False or nazwisko.isalpha() == False or wiek.isdigit() == False or plec() == False:
+            imie, nazwisko, wiek, nickname, plecc = input('Podaj imie: '), input("Podaj nazwisko: "), input("Podaj wiek: "), input("Podaj nickname: "), input("Wybierz płeć (m/k): ")
+            if imie.isalpha() == False or nazwisko.isalpha() == False or wiek.isdigit() == False or plec(plecc) == False:
                 print('Podano nieprawidlowe dane. Sprobuj ponownie.')
             else:
+                Player.imie = imie
+                Player.nazwisko = nazwisko
+                Player.nick = nickname
+                Player.wiek = wiek
+                Player.plec = plec(plecc)
                 if 0 < int(wiek) < 18:
                     """def ilelat(x):
                         if x == 1:
@@ -29,13 +33,8 @@ def menu():
                         quit()
 
 
-                    Player.nick = nickname  #DOKONCZYC KLASE PLAYER !
-                    Player.imie = imie
-                    Player.nazwisko = nazwisko
-                    Player.wiek = wiek
-                    Player.plec = plec
-
                 else:
+                    print()
                     print(f'********* Rejestracja przebiegla pomyslnie! *********\n '
                           f'Witamy Cie {nickname} na pokladzie!'
                           ' Zyczymy milej zabawy! ')
@@ -48,25 +47,30 @@ def menu():
         print()
         print(  '*_* Tryb Guest: Wybierz "g"\n'
                 '^-^ Tryb Zawodnika: Wybierz "z"\n')
-        wybor = input('Wybierz w jakim trybie chcesz zaczac gre: ')
-        if wybor == "g" or wybor == "G":
-            pass
-        if wybor == "z" or wybor == "Z":
-            registration()
-
-
-
+        while True:
+            print()
+            wybor = input('Wybierz w jakim trybie chcesz zaczac gre: ')
+            if wybor == "g" or wybor == "G":
+                print()
+                print("----------Tryb tymczasowo nieaktywny, przepraszamy :< ---------- ")
+                print()
+            if wybor == "z" or wybor == "Z":
+                registration()
+                break
+            else:
+                print('Niepoprawne sformułowanie. Sprobuj jeszcze raz. Miales jedno zadanie... :P')
 
     run_dice_simulator()
 
 
 def main_scene():
     print('\n -------------- DICE GAME SIMULATOR _____________ \n'
-          f'           Jestes zalogowany jako:  {Player.nick}')
+          f'           Jestes zalogowany jako: {Player.nick}')
+
+
 def main():
-    menu()
+    first_log()
     main_scene()
    # deposit()
-
 
 main()

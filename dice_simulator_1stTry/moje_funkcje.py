@@ -23,18 +23,18 @@ def deposit():
             print(f'Wpisano niepoprawna wartosc, Sprobuj ponownie')
 
 # SPRAWDZEIE PRAWIDLOWEGO WPROWADZENIA PLCI W REJESTRACJI PROFILU ZAWODNIKA
-def plec():
+def plec(nazwa):
     while True:
-        nazwa = input('Wybierz płeć (m/k):')
-        print()
+        #nazwa = input('Wybierz płeć (m/k):')
+       # print()
         if nazwa == "m" or nazwa == "M":
             plec_gracza = "Mezczyzna"
-            return plec_gracza
+            break
            # break
         elif nazwa == "k" or nazwa == "K":
             plec_gracza = "Kobieta"
-            return plec_gracza
-           # break
+            break
         else:
            # print('Wprowadzono niepoprawne dane. Sprobuj ponownie.')
             return False
+    return plec_gracza
